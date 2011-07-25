@@ -21,7 +21,7 @@ my $second = IO::LCDproc::Widget->new(
              );
 
 $client->add( $screen );
-$screen->add( $first $second );
+$screen->add( $first, $second );
 $client->connect() or die "cannot connect: $!";
 $client->initialize();
 
