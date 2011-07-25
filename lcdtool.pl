@@ -11,19 +11,17 @@ use IO::LCDproc;
 
 my $config = Config::Tiny->read('config.ini');
 
-my @lines;
-
 my $client = IO::LCDproc::Client->new(name => $config->{_}->{name});
 my $screen = IO::LCDproc::Screen->new(name => $config->{_}->{screen_name}, heartbeat => $config->{_}->{heartbeat});
-$lines[1] = IO::LCDproc::Widget->new(
+my $first = IO::LCDproc::Widget->new(
              name => "first", align => "center", xPos => 1, yPos => 1
             );
-$lines[2] = IO::LCDproc::Widget->new(
+my $second = IO::LCDproc::Widget->new(
               name => "second", align => "center", xPos => 1, yPos => 2
              );
 
 $client->add( $screen );
-$screen->add( $lines[1] $lines[2] );
+$screen->add( $first $second );
 $client->connect() or die "cannot connect: $!";
 $client->initialize();
 
