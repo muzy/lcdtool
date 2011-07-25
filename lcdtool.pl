@@ -46,6 +46,9 @@ tcp_server(
         }
 );
 
+$first->set( data => "PIZZAPROXY.ORG" );
+$second->set( data => "SERVER READY" );
+
 sub announce {
     my ($handle,$command) = @_;
     my ($line,$message) = split(/:/,$command,2);
