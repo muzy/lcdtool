@@ -52,7 +52,7 @@ sub announce {
     if ( $line eq "1" ) {
         $first->set( data => $message );
     } elsif ( $line eq "2" ) {
-    ^   $second->set( data => $message );
+        $second->set( data => $message );
     } else {
         print "No display available";
     }
