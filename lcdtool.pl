@@ -48,13 +48,15 @@ tcp_server(
 
 sub announce {
     my ($handle,$command) = @_;
-    my ($line,$message) = split(/:/,$command,1);
-    print Dumper $line;
-    print Dumper $message;
+    my ($line,$message) = split(/:/,$command,2);
+    if ( $line eq "1" ) {
+        $first->set( data => $message );
+    } elsif ( $line eq "2" ) {
+    ^   $second->set( data => $message );
+    } else {
+        print "No display available";
+    }
     $client->flushAnswers();
 }
 
-
-#$first->set( data => "First Line" );
-#$second->set( data => "1234567890" );
 AnyEvent->condvar->wait();
